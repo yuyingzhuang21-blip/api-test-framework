@@ -12,11 +12,13 @@
 
 ## 快速开始
 
+```powershell
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 pytest -v            # 全量
 pytest -m smoke -v   # 冒烟
+```
 
 ## 设计要点
 
