@@ -4,3 +4,13 @@ __pycache__/
 reports/
 htmlcov/
 .env
+
+# 本地草稿：手工验证脚本与临时输出，不进仓库
+check_*.py
+diag*.py
+*_dump.txt
+*_check.txt
+*_summary.txt
+proc.txt
+port8000.txt
+git_status.txt

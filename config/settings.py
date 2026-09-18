@@ -8,7 +8,10 @@ class Settings(BaseSettings):
     api_timeout: int = 10
     api_retry_count: int = 3
     log_level: str = "INFO"
-    performance_threshold_ms: int = 5000  
+    performance_threshold_ms: int = 5000
+    game_api_base_url: str = "http://127.0.0.1:8000"
+    reqres_api_key: str = ""
+  
 
 
 settings = Settings()

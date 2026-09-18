@@ -9,12 +9,16 @@ from utils.logger import get_logger
 class BaseClient:
     """所有 API 客户端的基类：统一管理会话、超时、重试、日志"""
 
-    def __init__(self):
+    def __init__(self, base_url: str | None = None):
         self.logger = get_logger(self.__class__.__name__)
         self.session = requests.Session()
+        self.base_url = base_url or settings.api_base_url
+        if settings.reqres_api_key:                       # ← 新增这三行
+            self.session.headers.update({"x-api-key": settings.reqres_api_key})
+
 
     def request(self, method: str, path: str, retries: int | None = None, **kwargs) -> requests.Response:
-        url = f"{settings.api_base_url}{path}"
+        url = f"{self.base_url}{path}"                          # ← 用实例自己的地址
         kwargs.setdefault("timeout", settings.api_timeout)
         max_attempts = retries if retries is not None else settings.api_retry_count
 
